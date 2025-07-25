@@ -1,0 +1,17 @@
+{
+  "name": "Annulive",
+  "short_name": "Annulive",
+  "description": "Branch out your skills, layer by layer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef3c7",
+  "theme_color": "#92400e",
+  "icons": [
+    {
+      "src": "/annulive-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

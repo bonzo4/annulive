@@ -1,0 +1,46 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring - Mastery -->
+  <circle cx="60" cy="60" r="55" stroke="url(#gradient1)" stroke-width="3" fill="none">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Second ring - Advanced -->
+  <circle cx="60" cy="60" r="45" stroke="url(#gradient2)" stroke-width="2.5" fill="none" opacity="0.8" />
+  
+  <!-- Third ring - Intermediate -->
+  <circle cx="60" cy="60" r="35" stroke="url(#gradient3)" stroke-width="2" fill="none" opacity="0.7" />
+  
+  <!-- Fourth ring - Beginner -->
+  <circle cx="60" cy="60" r="25" stroke="url(#gradient4)" stroke-width="2" fill="none" opacity="0.6" />
+  
+  <!-- Core - Foundation -->
+  <circle cx="60" cy="60" r="15" fill="url(#coreGradient)" opacity="0.8" />
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#92400e" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a16207" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    
+    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fcd34d" />
+    </linearGradient>
+    
+    <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </radialGradient>
+  </defs>
+</svg>
