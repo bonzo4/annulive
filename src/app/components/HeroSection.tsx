@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { TreeRing } from "./TreeRing";
 import { AnnuliveLogo } from "../../components/AnnuliveLogo";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
@@ -33,16 +34,16 @@ export default function HeroSection() {
           </p>
 
           <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="roadmaps">
-              <button className="group flex transform items-center gap-2 rounded-full bg-gradient-to-r from-amber-700 to-orange-700 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-amber-800 hover:to-orange-800 hover:shadow-xl">
+            <Link href="/roadmaps">
+              <Button size="lg">
                 Start Growing
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </Button>
             </Link>
-            <Link href="explore">
-              <button className="transform rounded-full border-2 border-amber-700 px-8 py-4 text-lg font-semibold text-amber-700 transition-all duration-300 hover:scale-105 hover:bg-amber-700 hover:text-white dark:border-amber-300 dark:text-amber-300 dark:hover:bg-amber-300 dark:hover:text-amber-900">
+            <Link href="/explore">
+              <Button size="lg" variant="outline">
                 Explore Roadmaps
-              </button>
+              </Button>
             </Link>
           </div>
         </div>

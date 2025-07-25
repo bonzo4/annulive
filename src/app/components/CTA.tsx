@@ -1,6 +1,7 @@
-import { Zap, ArrowRight } from "lucide-react";
+import { ArrowRight, TreesIcon } from "lucide-react";
 import { TreeRing } from "./TreeRing";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function CTA() {
   return (
@@ -15,11 +16,11 @@ export default function CTA() {
           a time.
         </p>
         <Link href="/roadmaps">
-          <button className="group mx-auto flex transform items-center gap-3 rounded-full bg-gradient-to-r from-amber-700 to-orange-700 px-10 py-5 text-xl font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-amber-800 hover:to-orange-800 hover:shadow-xl">
-            <Zap className="h-6 w-6" />
+          <Button size="lg" className="mx-auto">
+            <TreesIcon className="h-6 w-6" />
             Begin Your Journey
             <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
-          </button>
+          </Button>
         </Link>
       </div>
     </section>
