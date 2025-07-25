@@ -1,7 +1,7 @@
 import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSections";
 import CTA from "./components/CTA";
-import Footer from "./components/Footer";
+import Footer from "./components/LandingFooter";
 
 export default function Home() {
   return (
