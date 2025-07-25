@@ -1,8 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Annulive 🚀
 
-## Getting Started
+**Social media AI app where users can create and share their own roadmaps learning the skills they want to.**
 
-First, run the development server:
+Annulive is a revolutionary platform that combines social networking with AI-powered learning. Users can create personalized learning roadmaps, share their progress, and discover new skills through an engaging, community-driven experience.
+
+## ✨ Features
+
+- **AI-Powered Roadmaps**: Create intelligent learning paths tailored to your goals
+- **Social Learning**: Share your progress and discover what others are learning
+- **Community-Driven**: Connect with learners on similar paths
+- **Skill Tracking**: Monitor your progress and celebrate milestones
+- **Personalized Experience**: AI-driven recommendations based on your interests
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [Next.js 15](https://nextjs.org) with React 19
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com) with custom animations
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) for accessible components
+- **Authentication**: [Auth0](https://auth0.com/) for secure user management
+- **Icons**: [Lucide React](https://lucide.dev/) for beautiful icons
+- **TypeScript**: Full type safety throughout the application
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/bonzo4/annulive.git
+cd annulive
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Set up environment variables:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Configure your Auth0 credentials and other environment variables in `.env.local`.
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +69,42 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Available Scripts
 
-## Learn More
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the application for production
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint for code quality
 
-To learn more about Next.js, take a look at the following resources:
+### Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                 # Next.js App Router pages
+├── components/          # Reusable UI components
+│   └── ui/             # Base UI components (Radix + custom)
+├── lib/                # Utility functions and configurations
+└── middleware.ts       # Next.js middleware for authentication
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌟 Contributing
 
-## Deploy on Vercel
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🚀 Deploy
+
+The easiest way to deploy Annulive is using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more deployment options.
+
+---
+
+**Start your learning journey today with Annulive!** 🎯
