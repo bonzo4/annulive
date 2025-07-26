@@ -45,7 +45,7 @@ export async function updateUserName(formData: FormData) {
       throw new Error("Failed to update user name");
     }
 
-    redirect("/");
+    redirect(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/roadmaps`);
   } catch (error) {
     console.error("Error updating user name:", error);
     throw error;

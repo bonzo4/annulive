@@ -62,14 +62,12 @@ export default function RoadmapForm({
       const result = await generateRoadmap(formData);
 
       if (result.ok && result.content) {
-        // Reset form on success
         setFormData({
           skill: "",
           timeframe: "",
           resourceTypes: ["all"],
         });
 
-        // Call the callback if provided
         if (onRoadmapGenerated) {
           onRoadmapGenerated(result.content);
         } else {

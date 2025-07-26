@@ -19,7 +19,6 @@ export default async function PlatformLayout({
 
   if (user) {
     userData = await getUser({ userId: user.sub });
-    console.log("User data fetched:", userData);
   }
 
   return (

@@ -70,7 +70,9 @@ export default function SetNameDialog({
               className="w-full"
               autoFocus
             />
-            {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+            {error && error != "NEXT_REDIRECT" && (
+              <p className="mt-1 text-sm text-red-600">{error}</p>
+            )}
           </div>
 
           <DialogFooter>

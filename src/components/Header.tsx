@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { AnnuliveLogo } from "./AnnuliveLogo";
 import Button from "./ui/Button";
 import { UserData } from "@/lib/types";
+import HeaderUser from "./HeaderUser";
 
 interface HeaderProps {
   user: UserData | null;
@@ -27,32 +27,12 @@ export default function Header({ user }: HeaderProps) {
             >
               Explore
             </Link>
-            {user && (
-              <Link
-                href="/profile"
-                className="font-medium text-amber-700 transition-colors hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100"
-              >
-                Profile
-              </Link>
-            )}
             {user ? (
-              <div className="flex items-center space-x-3">
-                <img
-                  src={
-                    user.picture ||
-                    "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png"
-                  }
-                  alt={user.name || "User"}
-                  width={32}
-                  height={32}
-                  className="rounded-full border-2 border-amber-200 object-cover dark:border-amber-600"
-                />
-                <span className="font-medium text-amber-700 dark:text-amber-300">
-                  {user.name || "User"}
-                </span>
-              </div>
+              <HeaderUser user={user} />
             ) : (
-              <Link href="/auth/login">
+              <Link
+                href={`/auth/login?returnTo=${process.env.NEXT_PUBLIC_APP_BASE_URL}/roadmaps`}
+              >
                 <Button size="sm">Login</Button>
               </Link>
             )}
