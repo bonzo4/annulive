@@ -6,6 +6,13 @@ packages:
         limits:
           timeout: 20000
           memory: 256
+  - name: db
+    actions:
+      - name: saveUser
+        runtime: "python:3.11"
+        limits:
+          timeout: 5000
+          memory: 256
 environment:
   AGENT_ENDPOINT: ${AGENT_ENDPOINT}
   AGENT_ACCESS_KEY: ${AGENT_ACCESS_KEY}
