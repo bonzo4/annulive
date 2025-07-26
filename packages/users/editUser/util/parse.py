@@ -14,7 +14,7 @@ def parse(event):
         if not isinstance(body, dict):
             raise ValueError("Request body must be a JSON object")
         
-        user_id = body.get("user_id")
+        user_id = body.get("userId")
         name = body.get("name")
         picture = body.get("picture")
         
