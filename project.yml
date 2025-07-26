@@ -6,7 +6,7 @@ packages:
         limits:
           timeout: 20000
           memory: 256
-  - name: db
+  - name: users
     actions:
       - name: saveUser
         runtime: "python:3.11"
