@@ -18,6 +18,11 @@ packages:
         limits:
           timeout: 5000
           memory: 256
+      - name: editUser
+        runtime: "python:3.11"
+        limits:
+          timeout: 5000
+          memory: 256
 environment:
   AGENT_ENDPOINT: ${AGENT_ENDPOINT}
   AGENT_ACCESS_KEY: ${AGENT_ACCESS_KEY}
