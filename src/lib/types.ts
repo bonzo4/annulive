@@ -17,3 +17,9 @@ export interface RoadmapResponse {
   content?: string;
   error?: string;
 }
+
+export interface UserData {
+  id: string;
+  name?: string;
+  picture?: string;
+}
