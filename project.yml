@@ -11,7 +11,12 @@ packages:
       - name: saveUser
         runtime: "python:3.11"
         limits:
-          timeout: 10000
+          timeout: 5000
+          memory: 256
+      - name: getUser
+        runtime: "python:3.11"
+        limits:
+          timeout: 5000
           memory: 256
 environment:
   AGENT_ENDPOINT: ${AGENT_ENDPOINT}
