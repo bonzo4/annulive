@@ -27,6 +27,10 @@ def parse(event):
         if 'id' not in user_data:
             raise ValueError('User ID is required')
         
+        picture = user_data.get('picture', '')
+        if not picture or picture.startswith('https://s.gravatar.com'):
+            user_data['picture'] = 'https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png'
+        
         return user_data
         
     except json.JSONDecodeError as e:
