@@ -43,3 +43,4 @@ next-env.d.ts
 # Services
 .venv
 .deployed
+__deployer__.zip

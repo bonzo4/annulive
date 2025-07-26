@@ -24,6 +24,9 @@ def main(event):
                 'body': json.dumps({'error': 'User not found'})
             }
         
+        if '_id' in user:
+            user['_id'] = str(user['_id'])
+        
         return {
             'statusCode': 200,
             'body': json.dumps({'user': user})
