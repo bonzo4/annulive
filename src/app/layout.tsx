@@ -26,14 +26,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Annulive Team" }],
   creator: "Annulive",
   publisher: "Annulive",
-  metadataBase: new URL("https://annulive.com"), // Replace with your actual domain
-
-  // Open Graph metadata for social media sharing
+  metadataBase: new URL("https://annu.live"),
   openGraph: {
     title: "Annulive - Branch out your skills, layer by layer",
     description:
       "AI-powered learning roadmaps that grow with you. Create, share, and explore personalized skill trees in our thriving community of learners.",
-    url: "https://annulive.com", // Replace with your actual domain
+    url: "https://annu.live",
     siteName: "Annulive",
     images: [
       {
@@ -47,28 +45,25 @@ export const metadata: Metadata = {
     type: "website",
   },
 
-  // Twitter Card metadata
   twitter: {
     card: "summary",
     title: "Annulive - Branch out your skills, layer by layer",
     description:
       "AI-powered learning roadmaps that grow with you. Create, share, and explore personalized skill trees.",
     images: ["/annulive-logo.svg"],
-    creator: "@annulive", // Replace with your actual Twitter handle
+    creator: "@annulive",
   },
 
-  // Favicon and app icons
   icons: {
     icon: "/annulive-logo.svg",
     shortcut: "/annulive-logo.svg",
     apple: "/annulive-logo.svg",
   },
 
-  // App manifest for PWA
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
