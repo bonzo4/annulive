@@ -15,11 +15,11 @@ def main():
     
     try:
         client = MongoClient(uri)
-        db = client["app"]
-        collection = db["users"]
-        collection.insert_one({
-            "name": "Alonzo"
-        })
+        # db = client["app"]
+        # collection = db["users"]
+        # collection.insert_one({
+        #     "name": "Alonzo"
+        # })
         return { 
             "statusCode": 200,
             "body": {
