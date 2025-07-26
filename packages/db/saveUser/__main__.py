@@ -3,14 +3,16 @@ import os
 from pymongo import MongoClient
 
 def main():
+    
+    uri = os.environ.get("DATABASE_URL")
+    client = MongoClient(uri)
+    
     return { 
-            "statusCode": 200,
-            "body": {
-                "ok": True
-            }
-        } 
-    # uri = os.environ.get("DATABASE_URL")
-    # client = MongoClient(uri)
+        "statusCode": 200,
+        "body": {
+            "ok": True
+        }
+    } 
     
     # try:
     #     db = client["app"]
