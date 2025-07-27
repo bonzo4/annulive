@@ -23,7 +23,7 @@ def main(event):
         roadmaps = []
         for roadmap in data:
             roadmaps.append({
-                'id': roadmap['id'],
+                'id': str(roadmap['_id']),
                 'title': roadmap['title'],
                 'content': roadmap['content'],
                 'userId': roadmap['userId'],
