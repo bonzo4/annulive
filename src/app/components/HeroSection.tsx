@@ -42,7 +42,7 @@ export default function HeroSection() {
             </Link>
             <Link href="/explore">
               <Button size="lg" variant="outline">
-                Explore Roadmaps
+                Explore Trunk Tracks
               </Button>
             </Link>
           </div>

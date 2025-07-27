@@ -19,7 +19,7 @@ export default function Header({ user }: HeaderProps) {
               href="/roadmaps"
               className="font-medium text-amber-700 transition-colors hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100"
             >
-              Roadmaps
+              Trunk Tracks
             </Link>
             <Link
               href="/explore"
