@@ -1,3 +1,5 @@
+"use server";
+
 import { appConfig } from "../config";
 import { UserData } from "../types";
 
