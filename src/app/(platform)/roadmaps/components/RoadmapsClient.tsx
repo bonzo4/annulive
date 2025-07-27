@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import RoadmapItem from "./RoadmapItem";
+import RoadmapItem from "@/components/roadmap/RoadmapItem";
 import Button from "@/components/ui/Button";
 import { useUser } from "@/contexts/UserContext";
 import { getUserRoadmaps } from "../actions/getUserRoadmaps";
@@ -11,7 +11,7 @@ import { SavedRoadmap } from "@/lib/types";
 export default function RoadmapsClient() {
   const { userData, isAuthenticated } = useUser();
   const [roadmaps, setRoadmaps] = useState<SavedRoadmap[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -60,19 +60,6 @@ export default function RoadmapsClient() {
               Login
             </Button>
           </Link>
-        </div>
-        <div className="mt-12 max-w-4xl">
-          <h2 className="mb-4 text-2xl font-semibold text-amber-900 dark:text-amber-100">
-            See what a trunk track looks like
-          </h2>
-          <div className="space-y-6">
-            <RoadmapItem
-              id="demo"
-              title="Frontend Development Basics"
-              description="Master modern frontend technologies and frameworks."
-              progressPercentage={65}
-            />
-          </div>
         </div>
       </div>
     );
@@ -123,22 +110,7 @@ export default function RoadmapsClient() {
             </div>
           ) : (
             roadmaps.map((roadmap) => {
-              const completedSteps = roadmap.completedSteps || [];
-              const totalSteps = roadmap.steps?.length || 0;
-              const progressPercentage =
-                totalSteps > 0
-                  ? Math.round((completedSteps.length / totalSteps) * 100)
-                  : 0;
-
-              return (
-                <RoadmapItem
-                  key={roadmap.id}
-                  id={roadmap.id!}
-                  title={roadmap.title || "Untitled Roadmap"}
-                  description={`Created ${new Date(roadmap.createdAt).toLocaleDateString()}`}
-                  progressPercentage={progressPercentage}
-                />
-              );
+              return <RoadmapItem key={roadmap.id} roadmap={roadmap} />;
             })
           )}
         </div>

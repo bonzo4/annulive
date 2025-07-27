@@ -11,11 +11,13 @@ import {
 import RoadmapDisplay from "@/components/roadmap/RoadmapDisplay";
 import { RoadmapData } from "@/lib/types";
 import Button from "@/components/ui/Button";
+import { useRouter } from "next/navigation";
 
 export default function NewRoadmap() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [roadmap, setRoadmap] = useState<RoadmapData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const savedRoadmap = loadCurrentRoadmapFromStorage();
@@ -54,6 +56,10 @@ export default function NewRoadmap() {
 
   const handleRetry = () => {
     setError(null);
+  };
+
+  const handleLogin = () => {
+    router.push("/auth/login?returnTo=/roadmaps/new");
   };
 
   return (
@@ -95,7 +101,11 @@ export default function NewRoadmap() {
         )}
 
         {!isSubmitting && roadmap && (
-          <RoadmapDisplay roadmap={roadmap} showActions={false} />
+          <RoadmapDisplay
+            roadmap={roadmap}
+            isPreview={true}
+            handleLogin={handleLogin}
+          />
         )}
 
         {!isSubmitting && error && (
