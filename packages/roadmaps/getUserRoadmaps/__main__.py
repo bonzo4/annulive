@@ -25,7 +25,9 @@ def main(event):
             roadmaps.append({
                 'id': str(roadmap['_id']),
                 'title': roadmap['title'],
-                'content': roadmap['content'],
+                'steps': roadmap.get('steps', []),
+                'tags': roadmap.get('tags', []),
+                'totalTimeframe': roadmap.get('totalTimeframe', ''),
                 'userId': roadmap['userId'],
                 'completedSteps': roadmap['completedSteps'],
                 'createdAt': roadmap['createdAt'],

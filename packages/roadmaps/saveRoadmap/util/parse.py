@@ -8,10 +8,34 @@ def validate_roadmap_data(roadmap_data):
             'body': json.dumps({'ok': False, 'error': 'Title is required'})
         }
     
-    if not roadmap_data.get('content'):
+    if not roadmap_data.get('steps'):
         return {
             'statusCode': 400,
-            'body': json.dumps({'ok': False, 'error': 'Content is required'})
+            'body': json.dumps({'ok': False, 'error': 'Steps are required'})
+        }
+    
+    if not isinstance(roadmap_data.get('steps'), list):
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'ok': False, 'error': 'Steps must be an array'})
+        }
+    
+    if not roadmap_data.get('tags'):
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'ok': False, 'error': 'Tags are required'})
+        }
+    
+    if not isinstance(roadmap_data.get('tags'), list):
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'ok': False, 'error': 'Tags must be an array'})
+        }
+    
+    if not roadmap_data.get('totalTimeframe'):
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'ok': False, 'error': 'Total timeframe is required'})
         }
     
     if not roadmap_data.get('userId'):

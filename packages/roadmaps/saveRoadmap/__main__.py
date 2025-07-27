@@ -17,7 +17,9 @@ def main(event):
         
         roadmap = {
             'title': roadmap_data['title'],
-            'content': roadmap_data['content'],
+            'steps': roadmap_data['steps'],
+            'tags': roadmap_data['tags'],
+            'totalTimeframe': roadmap_data['totalTimeframe'],
             'userId': roadmap_data['userId'],
             'completedSteps': roadmap_data.get('completedSteps', []),
             'createdAt': datetime.now().isoformat(),
