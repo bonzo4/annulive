@@ -15,10 +15,7 @@ def main(event):
         if validation_error:
             return validation_error
         
-        roadmap_id = f"roadmap_{int(datetime.now().timestamp())}_{roadmap_data['userId']}"
-
         roadmap = {
-            'id': roadmap_id,
             'title': roadmap_data['title'],
             'content': roadmap_data['content'],
             'userId': roadmap_data['userId'],
@@ -33,11 +30,14 @@ def main(event):
 
         collection.insert_one(roadmap)
         
+        roadmap_response = roadmap.copy()
+        roadmap_response['_id'] = str(roadmap['_id'])
+        
         return {
             "statusCode": 200,
             "body": json.dumps({
                 "ok": True,
-                "roadmap": roadmap,
+                "roadmap": roadmap_response,
             }),
             "headers": {
                 "Content-Type": "application/json"
