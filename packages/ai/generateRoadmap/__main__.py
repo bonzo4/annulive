@@ -1,12 +1,12 @@
 import os
 import json
 
-from util.parse import parse_ai_event
+from util.parse import parse
 from util.ask_ai import ask_ai
 
 def main(event):
     try:
-        skill, timeframe, resource_types = parse_ai_event(event)
+        skill, timeframe, resource_types = parse(event)
         
         response_content = ask_ai(skill, timeframe, resource_types)
         

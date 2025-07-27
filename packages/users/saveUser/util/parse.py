@@ -1,27 +1,37 @@
-import sys
-import os
+import json
 
-from packages.shared.util.parse import parse_event
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'shared'))
-
-def validate_user_data(user_data):
-    """Validation function for user data"""
-    if not isinstance(user_data, dict):
-        raise ValueError("userData must be a JSON object")
-    
-    if 'id' not in user_data:
-        raise ValueError('User ID is required')
-    
-    picture = user_data.get('picture', '')
-    if not picture or picture.startswith('https://s.gravatar.com'):
-        user_data['picture'] = 'https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png'
-    
-    return user_data
-
-def parse_user_event(event):
-    """Parse event for user service"""
-    return parse_event(
-        event, 
-        expected_fields=['userData'],
-        validation_rules={'userData': validate_user_data}
-    )
+def parse(event):
+    try:
+        if isinstance(event, str):
+            body = json.loads(event)
+        elif isinstance(event, dict) and 'body' in event:
+            body = json.loads(event['body']) if isinstance(event['body'], str) else event['body']
+        elif isinstance(event, dict):
+            body = event
+        else:
+            raise ValueError(f"Invalid event format: expected string or dict, got {type(event)}")
+        
+        if not isinstance(body, dict):
+            raise ValueError("Event body must be a JSON object")
+        
+        user_data = body.get('userData')
+        if not user_data:
+            raise ValueError('userData is required')
+        
+        if isinstance(user_data, str):
+            user_data = json.loads(user_data)
+        
+        if not isinstance(user_data, dict):
+            raise ValueError("userData must be a JSON object")
+        
+        if 'id' not in user_data:
+            raise ValueError('User ID is required')
+        
+        picture = user_data.get('picture', '')
+        if not picture or picture.startswith('https://s.gravatar.com'):
+            user_data['picture'] = 'https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png'
+        
+        return user_data
+        
+    except json.JSONDecodeError as e:
+        raise json.JSONDecodeError(f"Invalid JSON in event: {str(e)}", e.doc, e.pos)
