@@ -2,13 +2,13 @@ import os
 import json
 
 from pymongo import MongoClient
-from util.parse import parse
+from util.parse import parse_user_event
 
 uri = os.environ.get("DATABASE_URL")
 
 def main(event):
     try:
-        user_data = parse(event)
+        user_data = parse_user_event(event)
         
         client = MongoClient(uri)
         db = client["app"]
