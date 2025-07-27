@@ -1,4 +1,4 @@
-import { RoadmapData, SavedRoadmap } from "@/lib/types";
+import { RoadmapData, SavedRoadmap, UserData } from "@/lib/types";
 import { useState } from "react";
 import RoadmapStep from "./RoadmapStep";
 import Button from "../ui/Button";
@@ -6,17 +6,22 @@ import ProgressBar from "./ProgressBar";
 import { useUser } from "@/contexts/UserContext";
 import { saveRoadmapToAccount } from "@/app/(platform)/roadmaps/actions/saveRoadmap";
 import { editRoadmap } from "@/app/(platform)/roadmaps/actions/editRoadmap";
+import { useRouter } from "next/navigation";
+import RoadmapOwner from "./RoadmapOwner";
+import { clearCurrentRoadmapFromStorage } from "@/lib/localStorage";
 
 interface RoadmapDisplayProps {
   roadmap: RoadmapData | SavedRoadmap;
-  showActions?: boolean;
   isPreview?: boolean;
+  handleLogin: () => void;
+  roadmapOwner?: UserData | null;
 }
 
 export default function RoadmapDisplay({
   roadmap,
-  showActions = true,
   isPreview = false,
+  handleLogin,
+  roadmapOwner,
 }: RoadmapDisplayProps) {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(
     new Set("completedSteps" in roadmap ? roadmap.completedSteps : []),
@@ -25,6 +30,7 @@ export default function RoadmapDisplay({
   const [saveError, setSaveError] = useState<string | null>(null);
   const [updateError, setUpdateError] = useState<string | null>(null);
   const { userData, isAuthenticated } = useUser();
+  const router = useRouter();
 
   const toggleStepCompletion = (stepIndex: number) => {
     setCompletedSteps((prev) => {
@@ -68,12 +74,15 @@ export default function RoadmapDisplay({
         steps: roadmap.steps,
         tags: roadmap.tags,
         totalTimeframe: roadmap.totalTimeframe,
-        completedSteps: Array.from(completedSteps),
       });
 
-      if (result.ok) {
-      } else {
+      if (!result.ok) {
         setSaveError(result.error || "Failed to save roadmap");
+      } else {
+        clearCurrentRoadmapFromStorage();
+        router.push(
+          "/roadmaps" + (result.roadmap ? `/${result.roadmap.id}` : ""),
+        );
       }
     } catch (error) {
       console.error("Failed to save roadmap to account:", error);
@@ -92,6 +101,9 @@ export default function RoadmapDisplay({
           <h2 className="mb-2 text-2xl font-bold text-gray-900">
             {roadmap.title || "Your Learning Trunk Track"}
           </h2>
+          {roadmapOwner && (
+            <RoadmapOwner roadmapOwner={roadmapOwner} userData={userData} />
+          )}
           <p className="text-gray-600">
             Track your progress through this personalized learning path
           </p>
@@ -119,15 +131,19 @@ export default function RoadmapDisplay({
 
           <ProgressBar progressPercentage={progressPercentage} />
         </div>
-        {showActions && (
+        {isPreview && (
           <div className="flex flex-col gap-2">
-            {isAuthenticated && (
+            {isAuthenticated ? (
               <Button
                 onClick={handleSaveToAccount}
                 disabled={isSaving}
                 variant="primary"
               >
                 {isSaving ? "Saving..." : "Save to Account"}
+              </Button>
+            ) : (
+              <Button onClick={handleLogin} variant="secondary">
+                Log in to Save
               </Button>
             )}
           </div>
