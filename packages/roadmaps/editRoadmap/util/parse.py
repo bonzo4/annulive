@@ -2,11 +2,6 @@ import json
 
 def validate_roadmap_data(roadmap_data):
     """Validate roadmap data and return error response if validation fails"""
-    if not roadmap_data.get('title'):
-        return {
-            'statusCode': 400,
-            'body': json.dumps({'ok': False, 'error': 'Title is required'})
-        }
     
     if 'steps' in roadmap_data and not isinstance(roadmap_data.get('steps'), list):
         return {
