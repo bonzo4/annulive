@@ -1,7 +1,7 @@
 "use server";
 
 import { appConfig } from "@/lib/config";
-import { SavedRoadmap } from "@/lib/types";
+import { SavedRoadmapWithUser } from "@/lib/types";
 
 export interface GetRoadmapsOptions {
   limit?: number;
@@ -19,7 +19,7 @@ export interface PaginationInfo {
 
 export async function getRoadmaps(options: GetRoadmapsOptions = {}): Promise<{
   ok: boolean;
-  roadmaps?: SavedRoadmap[];
+  roadmaps?: SavedRoadmapWithUser[];
   pagination?: PaginationInfo;
   error?: string;
 }> {

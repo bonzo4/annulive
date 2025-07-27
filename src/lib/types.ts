@@ -30,3 +30,7 @@ export interface SavedRoadmap {
   userId?: string;
   completedSteps?: number[];
 }
+
+export interface SavedRoadmapWithUser extends SavedRoadmap {
+  user?: UserData | null;
+}

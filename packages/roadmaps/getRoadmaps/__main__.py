@@ -31,11 +31,38 @@ def main(event):
 
         total_count = collection.count_documents({})
         
-        cursor = collection.find({}).sort("createdAt", -1).skip(skip).limit(limit)
+        # Use aggregation pipeline to join user data
+        pipeline = [
+            {
+                "$lookup": {
+                    "from": "users",
+                    "localField": "userId",
+                    "foreignField": "id",
+                    "as": "user"
+                }
+            },
+            {
+                "$unwind": {
+                    "path": "$user",
+                    "preserveNullAndEmptyArrays": True
+                }
+            },
+            {
+                "$sort": {"createdAt": -1}
+            },
+            {
+                "$skip": skip
+            },
+            {
+                "$limit": limit
+            }
+        ]
+        
+        cursor = collection.aggregate(pipeline)
         
         roadmaps = []
         for roadmap in cursor:
-            roadmaps.append({
+            roadmap_data = {
                 'id': str(roadmap['_id']),
                 'title': roadmap['title'],
                 'steps': roadmap.get('steps', []),
@@ -45,7 +72,20 @@ def main(event):
                 'completedSteps': roadmap.get('completedSteps', []),
                 'createdAt': roadmap['createdAt'],
                 'updatedAt': roadmap['updatedAt']
-            })
+            }
+            
+            # Add user information if available
+            if 'user' in roadmap and roadmap['user']:
+                user = roadmap['user']
+                roadmap_data['user'] = {
+                    'id': user.get('id'),
+                    'name': user.get('name'),
+                    'picture': user.get('picture')
+                }
+            else:
+                roadmap_data['user'] = None
+                
+            roadmaps.append(roadmap_data)
 
         total_pages = (total_count + limit - 1) // limit
         has_next = page < total_pages
