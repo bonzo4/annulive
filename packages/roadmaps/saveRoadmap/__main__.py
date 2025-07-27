@@ -34,6 +34,7 @@ def main(event):
         
         roadmap_response = roadmap.copy()
         roadmap_response['id'] = str(roadmap['_id'])
+        roadmap_response['_id'] = str(roadmap['_id'])
         
         return {
             "statusCode": 200,
