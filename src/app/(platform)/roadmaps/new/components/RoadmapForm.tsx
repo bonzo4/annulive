@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import Select from "@/components/ui/Select";
 import Input from "@/components/ui/Input";
 import { generateRoadmap } from "../actions/generateRoadmap";
+import { RoadmapData } from "@/lib/types";
 
 export interface RoadmapFormData {
   skill: string;
@@ -13,7 +14,7 @@ export interface RoadmapFormData {
 interface RoadmapFormProps {
   isSubmitting: boolean;
   setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-  onRoadmapGenerated?: (roadmapContent: string) => void;
+  onRoadmapGenerated?: (roadmap: RoadmapData) => void;
   onError?: (error: string) => void;
 }
 
@@ -61,7 +62,7 @@ export default function RoadmapForm({
     try {
       const result = await generateRoadmap(formData);
 
-      if (result.ok && result.content) {
+      if (result.ok && result.roadmap) {
         setFormData({
           skill: "",
           timeframe: "",
@@ -69,10 +70,10 @@ export default function RoadmapForm({
         });
 
         if (onRoadmapGenerated) {
-          onRoadmapGenerated(result.content);
+          onRoadmapGenerated(result.roadmap);
         } else {
           alert("Trunk track created successfully!");
-          console.log("Generated trunk track:", result.content);
+          console.log("Generated trunk track:", result.roadmap);
         }
       } else {
         const errorMessage = result.error || "Unknown error";

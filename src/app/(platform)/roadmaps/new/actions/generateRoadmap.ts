@@ -2,7 +2,13 @@
 
 import { appConfig } from "@/lib/config";
 import { RoadmapFormData } from "../components/RoadmapForm";
-import { RoadmapResponse } from "../../../../../lib/types";
+import { RoadmapData } from "@/lib/types";
+
+interface RoadmapResponse {
+  ok: boolean;
+  roadmap?: RoadmapData;
+  error?: string;
+}
 
 export async function generateRoadmap({
   skill,
@@ -57,7 +63,7 @@ export async function generateRoadmap({
 
     return {
       ok: true,
-      content: data.content,
+      roadmap: JSON.parse(data.content) as RoadmapData,
     };
   } catch (error) {
     console.error("Error generating roadmap:", error);

@@ -1,12 +1,43 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import RoadmapItem from "./RoadmapItem";
 import Button from "@/components/ui/Button";
 import { useUser } from "@/contexts/UserContext";
+import { getUserRoadmaps } from "../actions/getUserRoadmaps";
+import { SavedRoadmap } from "@/lib/types";
 
 export default function RoadmapsClient() {
   const { userData, isAuthenticated } = useUser();
+  const [roadmaps, setRoadmaps] = useState<SavedRoadmap[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchRoadmaps();
+    }
+  }, [isAuthenticated]);
+
+  const fetchRoadmaps = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await getUserRoadmaps();
+
+      if (result.ok && result.roadmaps) {
+        setRoadmaps(result.roadmaps);
+      } else {
+        setError(result.error || "Failed to fetch roadmaps");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!isAuthenticated) {
     return (
@@ -35,7 +66,12 @@ export default function RoadmapsClient() {
             See what a trunk track looks like
           </h2>
           <div className="space-y-6">
-            <RoadmapItem />
+            <RoadmapItem
+              id="demo"
+              title="Frontend Development Basics"
+              description="Master modern frontend technologies and frameworks."
+              progressPercentage={65}
+            />
           </div>
         </div>
       </div>
@@ -50,13 +86,63 @@ export default function RoadmapsClient() {
             ? `${userData.name}'s Trunk Tracks`
             : "Your Trunk Tracks"}
         </h1>
-        <Link href="/roadmaps/new">
-          <Button>New Trunk Track</Button>
-        </Link>
+        <div className="flex gap-2">
+          <Link href="/roadmaps/new">
+            <Button>New Trunk Track</Button>
+          </Link>
+        </div>
       </div>
-      <div className="space-y-6">
-        <RoadmapItem />
-      </div>
+
+      {loading && (
+        <div className="py-8 text-center">
+          <p className="text-amber-700 dark:text-amber-300">
+            Loading your roadmaps...
+          </p>
+        </div>
+      )}
+
+      {error && (
+        <div className="py-8 text-center">
+          <p className="text-red-600 dark:text-red-400">Error: {error}</p>
+          <Button variant="outline" onClick={fetchRoadmaps} className="mt-4">
+            Try Again
+          </Button>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className="space-y-6">
+          {roadmaps.length === 0 ? (
+            <div className="flex flex-col items-center py-8 text-center">
+              <p className="mb-4 text-amber-700 dark:text-amber-300">
+                You haven&apos;t created any trunk tracks yet.
+              </p>
+              <Link href="/roadmaps/new">
+                <Button>Create Your First Trunk Track</Button>
+              </Link>
+            </div>
+          ) : (
+            roadmaps.map((roadmap) => {
+              const completedSteps = roadmap.completedSteps || [];
+              const totalSteps = roadmap.steps?.length || 0;
+              const progressPercentage =
+                totalSteps > 0
+                  ? Math.round((completedSteps.length / totalSteps) * 100)
+                  : 0;
+
+              return (
+                <RoadmapItem
+                  key={roadmap.id}
+                  id={roadmap.id!}
+                  title={roadmap.title || "Untitled Roadmap"}
+                  description={`Created ${new Date(roadmap.createdAt).toLocaleDateString()}`}
+                  progressPercentage={progressPercentage}
+                />
+              );
+            })
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,28 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RoadmapForm from "./components/RoadmapForm";
-import RoadmapDisplay from "@/components/roadmap/RoadmapDisplay";
 import RoadmapError from "@/components/roadmap/RoadmapError";
+import {
+  saveCurrentRoadmapToStorage,
+  loadCurrentRoadmapFromStorage,
+  clearCurrentRoadmapFromStorage,
+} from "@/lib/localStorage";
+import RoadmapDisplay from "@/components/roadmap/RoadmapDisplay";
+import { RoadmapData } from "@/lib/types";
+import Button from "@/components/ui/Button";
 
 export default function NewRoadmap() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [roadmapContent, setRoadmapContent] = useState<string | null>(null);
+  const [roadmap, setRoadmap] = useState<RoadmapData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleRoadmapGenerated = (content: string) => {
-    setRoadmapContent(content);
+  useEffect(() => {
+    const savedRoadmap = loadCurrentRoadmapFromStorage();
+    if (savedRoadmap) {
+      setRoadmap(savedRoadmap);
+    }
+  }, []);
+
+  const handleRoadmapGenerated = (roadmap: RoadmapData) => {
+    setRoadmap(roadmap);
     setError(null);
+
+    try {
+      saveCurrentRoadmapToStorage({
+        title: roadmap.title || "Learning Roadmap",
+        steps: roadmap.steps || [],
+        tags: roadmap.tags || [],
+        totalTimeframe: roadmap.totalTimeframe || "Unknown",
+      });
+    } catch (error) {
+      console.error("Failed to parse roadmap content for storage:", error);
+    }
   };
 
   const handleError = (errorMessage: string) => {
     setError(errorMessage);
-    setRoadmapContent(null);
+    setRoadmap(null);
   };
 
   const handleCreateNew = () => {
-    setRoadmapContent(null);
+    setRoadmap(null);
     setError(null);
+
+    clearCurrentRoadmapFromStorage();
   };
 
   const handleRetry = () => {
@@ -35,6 +62,11 @@ export default function NewRoadmap() {
         <h1 className="mb-6 text-3xl font-bold text-amber-900 dark:text-amber-100">
           New Trunk Track
         </h1>
+        {roadmap && (
+          <Button onClick={handleCreateNew} variant="outline">
+            Create New Trunk Track
+          </Button>
+        )}
       </div>
 
       <div className="relative">
@@ -53,7 +85,7 @@ export default function NewRoadmap() {
           </div>
         )}
 
-        {!isSubmitting && !roadmapContent && !error && (
+        {!isSubmitting && !roadmap && !error && (
           <RoadmapForm
             isSubmitting={isSubmitting}
             setIsSubmitting={setIsSubmitting}
@@ -62,11 +94,8 @@ export default function NewRoadmap() {
           />
         )}
 
-        {!isSubmitting && roadmapContent && (
-          <RoadmapDisplay
-            content={roadmapContent}
-            onCreateNew={handleCreateNew}
-          />
+        {!isSubmitting && roadmap && (
+          <RoadmapDisplay roadmap={roadmap} showActions={false} />
         )}
 
         {!isSubmitting && error && (
