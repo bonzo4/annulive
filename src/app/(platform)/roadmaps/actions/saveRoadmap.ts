@@ -9,7 +9,6 @@ interface SaveRoadmapRequest {
   steps: RoadmapStepData[];
   tags: string[];
   totalTimeframe: string;
-  completedSteps?: number[];
 }
 
 interface SaveRoadmapResponse {
@@ -36,7 +35,6 @@ export async function saveRoadmapToAccount(
       steps: data.steps,
       tags: data.tags,
       totalTimeframe: data.totalTimeframe,
-      completedSteps: data.completedSteps || [],
       userId: session.user.sub,
     };
 
