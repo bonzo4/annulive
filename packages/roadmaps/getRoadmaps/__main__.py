@@ -31,7 +31,6 @@ def main(event):
 
         total_count = collection.count_documents({})
         
-        # Use aggregation pipeline to join user data
         pipeline = [
             {
                 "$lookup": {
