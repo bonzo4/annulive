@@ -14,7 +14,7 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-8">
+        <div className="flex flex-col justify-center gap-8 md:flex-row">
           <div className="group rounded-2xl border border-amber-200 bg-white/80 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-amber-800 dark:bg-amber-950/50">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 transition-transform group-hover:scale-110">
               <Brain className="h-6 w-6 text-white" />

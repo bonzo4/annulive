@@ -50,7 +50,7 @@ export default function RoadmapsClient() {
           Create personalized learning roadmaps to master any skill. Get started
           by creating your first trunk track to see how our platform works.
         </p>
-        <div className="flex flex-col gap-4 sm:flex-row">
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link href="/roadmaps/new">
             <Button size="lg">Create Your First Trunk Track</Button>
           </Link>
