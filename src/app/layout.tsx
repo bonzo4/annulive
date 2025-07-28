@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Annulive - Branch out your skills, layer by layer",
     description:
-      "AI-powered learning roadmaps that grow with you. Create, share, and explore personalized skill trees in our thriving community of learners.",
+      "Create, share, and explore AI-powered personalized roadmaps in our thriving community of learners.",
     url: "https://annu.live",
     siteName: "Annulive",
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Annulive - Branch out your skills, layer by layer",
     description:
-      "AI-powered learning roadmaps that grow with you. Create, share, and explore personalized skill trees.",
+      "Create, share, and explore AI-powered personalized roadmaps in our thriving community of learners.",
     images: ["/annulive-logo.svg"],
     creator: "@annulive",
   },
