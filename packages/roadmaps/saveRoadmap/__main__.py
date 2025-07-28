@@ -28,9 +28,22 @@ def main(event):
         
         client = MongoClient(uri)
         db = client["app"]
-        collection = db["roadmaps"]
+        roadmaps_collection = db["roadmaps"]
+        users_collection = db["users"]
 
-        collection.insert_one(roadmap)
+        roadmaps_collection.insert_one(roadmap)
+
+        user = users_collection.find_one({"id": roadmap_data['userId']})
+        if user:
+            existing_tags = user.get('tags', [])
+            new_tags = [tag for tag in roadmap_data['tags'] if tag not in existing_tags]
+            
+            if new_tags:
+                updated_tags = existing_tags + new_tags
+                users_collection.update_one(
+                    {"id": roadmap_data['userId']},
+                    {"$set": {"tags": updated_tags}}
+                )
         
         roadmap_response = roadmap.copy()
         roadmap_response['id'] = str(roadmap['_id'])
@@ -62,3 +75,6 @@ def main(event):
             'statusCode': 500,
             'body': json.dumps({'ok': False, 'error': f'Internal error: {str(e)}'})
         }
+    finally:
+        if 'client' in locals():
+            client.close()
