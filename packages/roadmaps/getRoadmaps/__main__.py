@@ -73,7 +73,6 @@ def main(event):
                 'updatedAt': roadmap['updatedAt']
             }
             
-            # Add user information if available
             if 'user' in roadmap and roadmap['user']:
                 user = roadmap['user']
                 roadmap_data['user'] = {

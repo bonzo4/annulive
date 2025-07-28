@@ -35,7 +35,6 @@ export default function RoadmapPage() {
         if (result.ok && result.roadmap) {
           setRoadmap(result.roadmap);
 
-          // Fetch the roadmap owner's information if userId exists
           if (result.roadmap.userId) {
             try {
               console.log("Fetching owner for roadmap:", result.roadmap.userId);
@@ -43,7 +42,6 @@ export default function RoadmapPage() {
               setRoadmapOwner(owner);
             } catch (ownerError) {
               console.error("Error fetching roadmap owner:", ownerError);
-              // Don't fail the whole page if we can't fetch owner info
             }
           }
         } else {
