@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { TreeRing } from "./TreeRing";
 import { AnnuliveLogo } from "../../components/AnnuliveLogo";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
@@ -7,12 +6,6 @@ import Button from "@/components/ui/Button";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <TreeRing size="w-96 h-96" className="absolute -top-48 -right-48" />
-        <TreeRing size="w-64 h-64" className="absolute top-1/2 -left-32" />
-        <TreeRing size="w-48 h-48" className="absolute right-1/4 bottom-0" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-16 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="mb-8 flex justify-center">

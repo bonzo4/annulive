@@ -1,4 +1,4 @@
-import { Brain, TreePine, Users, Target } from "lucide-react";
+import { Brain, Users, Target } from "lucide-react";
 
 export default function FeaturesSection() {
   return (
@@ -25,19 +25,6 @@ export default function FeaturesSection() {
             <p className="text-amber-800/70 dark:text-amber-200/70">
               Smart algorithms create personalized learning journeys based on
               your goals and progress.
-            </p>
-          </div>
-
-          <div className="group rounded-2xl border border-amber-200 bg-white/80 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-amber-800 dark:bg-amber-950/50">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 transition-transform group-hover:scale-110">
-              <TreePine className="h-6 w-6 text-white" />
-            </div>
-            <h4 className="mb-2 text-xl font-semibold text-amber-900 dark:text-amber-100">
-              Skill Trees
-            </h4>
-            <p className="text-amber-800/70 dark:text-amber-200/70">
-              Visualize your learning journey as interconnected branches of
-              knowledge and expertise.
             </p>
           </div>
 
