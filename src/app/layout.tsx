@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     siteName: "Annulive",
     images: [
       {
-        url: "/annulive-logo.svg",
-        width: 120,
-        height: 120,
+        url: "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+        width: 150,
+        height: 150,
         alt: "Annulive Logo - Tree rings representing layered skill building",
       },
     ],
@@ -50,14 +50,18 @@ export const metadata: Metadata = {
     title: "Annulive - Branch out your skills, layer by layer",
     description:
       "Create, share, and explore AI-powered personalized roadmaps in our thriving community of learners.",
-    images: ["/annulive-logo.svg"],
+    images: [
+      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+    ],
     creator: "@annulive",
   },
 
   icons: {
-    icon: "/annulive-logo.svg",
-    shortcut: "/annulive-logo.svg",
-    apple: "/annulive-logo.svg",
+    icon: "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+    shortcut:
+      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+    apple:
+      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
   },
 
   manifest: "/manifest.json",
