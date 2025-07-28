@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { useUser } from "@/contexts/UserContext";
 import { getUserRoadmaps } from "../actions/getUserRoadmaps";
 import { SavedRoadmap } from "@/lib/types";
+import Loader from "@/components/ui/Loader";
 
 export default function RoadmapsClient() {
   const { userData, isAuthenticated } = useUser();
@@ -65,6 +66,10 @@ export default function RoadmapsClient() {
     );
   }
 
+  if (loading) {
+    return <Loader text="Loading your roadmaps..." />;
+  }
+
   return (
     <div>
       <div className="flex flex-row justify-between space-x-10">
@@ -79,14 +84,6 @@ export default function RoadmapsClient() {
           </Link>
         </div>
       </div>
-
-      {loading && (
-        <div className="py-8 text-center">
-          <p className="text-amber-700 dark:text-amber-300">
-            Loading your roadmaps...
-          </p>
-        </div>
-      )}
 
       {error && (
         <div className="py-8 text-center">

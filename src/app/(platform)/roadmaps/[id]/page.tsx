@@ -8,6 +8,7 @@ import { SavedRoadmap, UserData } from "@/lib/types";
 import RoadmapDisplay from "@/components/roadmap/RoadmapDisplay";
 import RoadmapError from "@/components/roadmap/RoadmapError";
 import { getUser } from "@/lib/db/getUser";
+import LoadingIcon from "@/components/ui/Loader";
 
 export default function RoadmapPage() {
   const params = useParams();
@@ -69,11 +70,8 @@ export default function RoadmapPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-4 border-amber-200 border-t-amber-600"></div>
-          <p className="text-amber-700">Loading roadmap...</p>
-        </div>
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <LoadingIcon text="Loading roadmap..." />
       </div>
     );
   }

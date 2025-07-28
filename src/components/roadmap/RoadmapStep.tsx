@@ -31,7 +31,7 @@ export default function RoadmapStep({
               onClick={
                 isPreview ? undefined : () => toggleStepCompletion(index)
               }
-              className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold transition-colors ${
+              className={`flex h-8 min-h-8 w-8 min-w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-semibold transition-colors ${
                 isCompleted
                   ? "bg-green-600 text-white"
                   : isPreview

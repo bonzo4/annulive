@@ -95,59 +95,61 @@ export default function RoadmapDisplay({
   const progressPercentage = (completedSteps.size / roadmap.steps.length) * 100;
 
   return (
-    <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-xl">
-      <div className="mb-6 flex items-start justify-between">
-        <div>
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">
-            {roadmap.title || "Your Learning Trunk Track"}
-          </h2>
-          {roadmapOwner && (
-            <RoadmapOwner roadmapOwner={roadmapOwner} userData={userData} />
-          )}
-          <p className="text-gray-600">
-            Track your progress through this personalized learning path
-          </p>
-          <div className="mt-2 flex items-center gap-4">
-            <span className="text-sm text-gray-500">
-              Total Duration: <strong>{roadmap.totalTimeframe}</strong>
-            </span>
-            <span className="text-sm text-gray-500">
-              Progress:{" "}
-              <strong>
-                {completedSteps.size}/{roadmap.steps.length} layers
-              </strong>
-            </span>
-            <div className="flex gap-2">
-              {roadmap.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <ProgressBar progressPercentage={progressPercentage} />
-        </div>
-        {isPreview && (
-          <div className="flex flex-col gap-2">
-            {isAuthenticated ? (
-              <Button
-                onClick={handleSaveToAccount}
-                disabled={isSaving}
-                variant="primary"
-              >
-                {isSaving ? "Saving..." : "Save to Account"}
-              </Button>
-            ) : (
-              <Button onClick={handleLogin} variant="secondary">
-                Log in to Save
-              </Button>
+    <div className="mx-auto max-w-4xl rounded-2xl bg-white p-4 shadow-xl sm:p-8">
+      <div className="mb-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div className="min-w-0 flex-1">
+            <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
+              {roadmap.title || "Your Learning Trunk Track"}
+            </h2>
+            {roadmapOwner && (
+              <RoadmapOwner roadmapOwner={roadmapOwner} userData={userData} />
             )}
+            <p className="text-gray-600">
+              Track your progress through this personalized learning path
+            </p>
+            <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+              <span className="text-sm text-gray-500">
+                Total Duration: <strong>{roadmap.totalTimeframe}</strong>
+              </span>
+              <span className="text-sm text-gray-500">
+                Progress:{" "}
+                <strong>
+                  {completedSteps.size}/{roadmap.steps.length} layers
+                </strong>
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {roadmap.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <ProgressBar progressPercentage={progressPercentage} />
           </div>
-        )}
+          {isPreview && (
+            <div className="flex flex-col gap-2 lg:flex-shrink-0">
+              {isAuthenticated ? (
+                <Button
+                  onClick={handleSaveToAccount}
+                  disabled={isSaving}
+                  variant="primary"
+                >
+                  {isSaving ? "Saving..." : "Save to Account"}
+                </Button>
+              ) : (
+                <Button onClick={handleLogin} variant="secondary">
+                  Log in to Save
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {saveError && (
@@ -193,18 +195,20 @@ export default function RoadmapDisplay({
         </div>
       </div>
 
-      <div className="mt-8 rounded-lg bg-amber-50 p-4">
-        <p className="text-sm text-amber-800">
-          <strong>Tip:</strong> Click on the layer numbers to mark them as
-          completed and track your progress.
-          {progressPercentage === 100 && (
-            <span className="mt-1 block font-semibold text-green-800">
-              🎉 Congratulations! You&apos;ve completed your learning trunk
-              track!
-            </span>
-          )}
-        </p>
-      </div>
+      {!isPreview && (
+        <div className="mt-8 rounded-lg bg-amber-50 p-4">
+          <p className="text-sm text-amber-800">
+            <strong>Tip:</strong> Click on the layer numbers to mark them as
+            completed and track your progress.
+            {progressPercentage === 100 && (
+              <span className="mt-1 block font-semibold text-green-800">
+                🎉 Congratulations! You&apos;ve completed your learning trunk
+                track!
+              </span>
+            )}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
