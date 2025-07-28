@@ -33,10 +33,23 @@ def main(event):
             }
         }
     except ValueError as e:
-        return {
-            'statusCode': 400,
-            'body': json.dumps({'error': str(e)})
-        }
+        error_message = str(e)
+        if "authorization" in error_message.lower() or "token" in error_message.lower():
+            return {
+                'statusCode': 401,
+                'body': json.dumps({'error': 'Unauthorized: ' + error_message}),
+                'headers': {
+                    "Content-Type": "application/json"
+                }
+            }
+        else:
+            return {
+                'statusCode': 400,
+                'body': json.dumps({'error': str(e)}),
+                'headers': {
+                    "Content-Type": "application/json"
+                }
+            }
     except json.JSONDecodeError as e:
         return {
             'statusCode': 400,

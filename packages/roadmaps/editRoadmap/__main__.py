@@ -36,18 +36,13 @@ def main(event):
                 'statusCode': 404,
                 'body': json.dumps({'ok': False, 'error': 'Roadmap not found'})
             }
-        
-        # Check if the user owns the roadmap
         if existing_roadmap['userId'] != user_id:
             return {
                 'statusCode': 403,
                 'body': json.dumps({'ok': False, 'error': 'You are not authorized to edit this roadmap'})
             }
         
-        # Prepare update data - only include fields that are present in roadmap_data
         update_data = {'updatedAt': datetime.now().isoformat()}
-        
-        # Update only the fields that are provided
         
         if 'title' in roadmap_data:
             update_data['title'] = roadmap_data['title']
@@ -97,10 +92,23 @@ def main(event):
         }
         
     except ValueError as e:
-        return {
-            'statusCode': 400,
-            'body': json.dumps({'ok': False, 'error': str(e)})
-        }
+        error_message = str(e)
+        if "authorization" in error_message.lower() or "token" in error_message.lower():
+            return {
+                'statusCode': 401,
+                'body': json.dumps({'error': 'Unauthorized: ' + error_message}),
+                'headers': {
+                    "Content-Type": "application/json"
+                }
+            }
+        else:
+            return {
+                'statusCode': 400,
+                'body': json.dumps({'error': str(e)}),
+                'headers': {
+                    "Content-Type": "application/json"
+                }
+            }
     except json.JSONDecodeError as e:
         return {
             'statusCode': 400,

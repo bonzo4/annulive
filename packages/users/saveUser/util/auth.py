@@ -5,7 +5,7 @@ def validate_api_key_auth(event):
     if not api_key:
         raise ValueError("SERVICE_SECRET not configured")
     
-    auth_header = event.get('http', {}).get('headers', {}).get("Authorization", "")
+    auth_header = event.get('http', {}).get('headers', {}).get("authorization", "")
     
     if not auth_header:
         raise ValueError("Missing authorization header")
