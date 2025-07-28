@@ -35,7 +35,7 @@ export default function RoadmapItem({ roadmap, user }: RoadmapItemProps) {
           </div>
         )}
         <p className="mb-4 text-amber-800/70 dark:text-amber-200/70">
-          Started at: {createdAtString}
+          Started {createdAtString}
         </p>
         <div className="flex items-center justify-between">
           <div className="mr-4 h-2 flex-1 rounded-full bg-amber-200/50 dark:bg-amber-800/30">
