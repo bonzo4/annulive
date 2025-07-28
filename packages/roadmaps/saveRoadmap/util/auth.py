@@ -1,9 +1,9 @@
 import os
 
 def validate_api_key_auth(event):
-    api_key = os.environ.get("API_SECRET_KEY")
+    api_key = os.environ.get("SERVICE_SECRET")
     if not api_key:
-        raise ValueError("API_SECRET_KEY not configured")
+        raise ValueError("SERVICE_SECRET not configured")
     
     auth_header = event.get('http', {}).get('headers', {}).get("Authorization", "")
     
