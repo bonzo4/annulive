@@ -2,7 +2,7 @@
 
 **Social media AI app where users can create and share their own roadmaps learning the skills they want to.**
 
-Annulive is a platform that combines social networking with AI-powered learning. Users can create personalized learning roadmaps, share their progress, and discover new skills through an engaging, community-driven experience.
+Annulive is a platform that combines social networking with AI-powered learning. Users can create personalized learning roadmaps, share their progress, and discover new skills through a community-driven experience.
 
 🏆 **Built for the [boot.dev Hackathon](https://boot.dev) (July 25-28, 2025)**
 
