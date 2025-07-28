@@ -1,13 +1,13 @@
 import { ArrowRight, TreesIcon } from "lucide-react";
-import { TreeRing } from "./TreeRing";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import { AnnuliveIcon } from "@/components/AnnuliveLogo";
 
 export default function CTA() {
   return (
     <section className="py-20">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <TreeRing size="w-20 h-20" className="mx-auto mb-8" />
+      <div className="mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+        <AnnuliveIcon size={96} />
         <h3 className="mb-4 text-3xl font-bold text-amber-900 sm:text-4xl dark:text-amber-100">
           Ready to plant your first seed?
         </h3>
