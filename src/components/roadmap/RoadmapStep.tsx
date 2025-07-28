@@ -67,7 +67,14 @@ export default function RoadmapStep({
               className="flex items-start gap-2 text-sm text-gray-700"
             >
               <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-600"></span>
-              <span>{resource}</span>
+              <a
+                href={`https://www.google.com/search?q=${encodeURIComponent(resource)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 hover:underline"
+              >
+                {resource}
+              </a>
             </li>
           ))}
         </ul>
