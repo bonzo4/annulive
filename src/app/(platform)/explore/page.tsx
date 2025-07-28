@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import RoadmapItem from "@/components/roadmap/RoadmapItem";
 import Button from "@/components/ui/Button";
+import Pagination, {
+  PaginationInfo as PaginationInfoComponent,
+} from "@/components/ui/Pagination";
 import {
   getRoadmaps,
   GetRoadmapsOptions,
@@ -129,65 +132,23 @@ export default function Explore() {
                 ))}
               </div>
 
-              {pagination && pagination.totalPages > 1 && (
-                <div className="mt-12 flex items-center justify-center space-x-4">
-                  <Button
-                    variant="outline"
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={!pagination.hasPrev}
-                  >
-                    Previous
-                  </Button>
-
-                  <div className="flex items-center space-x-2">
-                    {Array.from(
-                      { length: Math.min(5, pagination.totalPages) },
-                      (_, i) => {
-                        let pageNum: number;
-
-                        if (pagination.totalPages <= 5) {
-                          pageNum = i + 1;
-                        } else if (currentPage <= 3) {
-                          pageNum = i + 1;
-                        } else if (currentPage >= pagination.totalPages - 2) {
-                          pageNum = pagination.totalPages - 4 + i;
-                        } else {
-                          pageNum = currentPage - 2 + i;
-                        }
-
-                        return (
-                          <Button
-                            key={pageNum}
-                            variant={
-                              currentPage === pageNum ? "primary" : "outline"
-                            }
-                            size="sm"
-                            onClick={() => handlePageChange(pageNum)}
-                            className="h-10 w-10 justify-center"
-                          >
-                            {pageNum}
-                          </Button>
-                        );
-                      },
-                    )}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={!pagination.hasNext}
-                  >
-                    Next
-                  </Button>
-                </div>
-              )}
-
               {pagination && (
-                <div className="mt-6 text-center text-sm text-amber-700 dark:text-amber-300">
-                  Showing {roadmaps.length} of {pagination.total} roadmaps
-                  {pagination.totalPages > 1 &&
-                    ` (Page ${currentPage} of ${pagination.totalPages})`}
-                </div>
+                <>
+                  <Pagination
+                    pagination={pagination}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                    className="mt-12"
+                  />
+
+                  <PaginationInfoComponent
+                    currentItems={roadmaps.length}
+                    total={pagination.total}
+                    currentPage={currentPage}
+                    totalPages={pagination.totalPages}
+                    className="mt-6"
+                  />
+                </>
               )}
             </>
           )}
