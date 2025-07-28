@@ -77,6 +77,7 @@ export async function editRoadmap(
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: appConfig.serviceSecret,
         },
         body: JSON.stringify(requestBody),
       },

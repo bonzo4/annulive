@@ -32,6 +32,7 @@ export async function generateRoadmap({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: appConfig.serviceSecret,
       },
       body: JSON.stringify({
         skillData: skill.trim(),

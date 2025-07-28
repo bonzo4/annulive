@@ -30,6 +30,7 @@ export async function updateUserName(formData: FormData) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: appConfig.serviceSecret,
         },
         body: JSON.stringify({ userData }),
       },

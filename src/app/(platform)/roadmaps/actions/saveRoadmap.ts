@@ -44,6 +44,7 @@ export async function saveRoadmapToAccount(
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: appConfig.serviceSecret,
         },
         body: JSON.stringify({ roadmapData }),
       },
