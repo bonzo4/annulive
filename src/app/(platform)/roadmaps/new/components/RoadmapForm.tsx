@@ -160,7 +160,7 @@ export default function RoadmapForm({
             id="skill"
             value={formData.skill}
             onChange={(e) => handleInputChange("skill", e.target.value)}
-            placeholder="e.g., React, Machine Learning, Photography..."
+            placeholder="e.g., Development, Mandarin, Photography..."
             required
           />
         </div>
