@@ -3,11 +3,14 @@ import json
 
 from pymongo import MongoClient
 from util.parse import parse
+from util.auth import validate_api_key_auth
 
 uri = os.environ.get("DATABASE_URL")
 
 def main(event):
     try:
+        validate_api_key_auth(event)
+        
         user_data = parse(event)
         
         client = MongoClient(uri)

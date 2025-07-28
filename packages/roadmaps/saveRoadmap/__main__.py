@@ -4,11 +4,14 @@ from datetime import datetime
 
 from pymongo import MongoClient
 from util.parse import parse, validate_roadmap_data
+from util.auth import validate_api_key_auth
 
 uri = os.environ.get("DATABASE_URL")
 
 def main(event):
     try:
+        validate_api_key_auth(event)
+        
         roadmap_data = parse(event)
         
         validation_error = validate_roadmap_data(roadmap_data)
