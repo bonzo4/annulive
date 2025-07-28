@@ -8,7 +8,30 @@ Annulive is a platform that combines social networking with AI-powered learning.
 
 ### 📝 Notes
 
-_This project focused on 3 main goals: building a social media + AI MVP platform, improving Python coding, and learning how to use a PAAS like Digital Ocean to host the application. AI assistance was used for styling to accelerate development._
+_This project focused on 3 main goals: building a social media + AI MVP, improving Python coding, and learning how to use a PAAS like Digital Ocean to host the application. AI assistance was used for styling to accelerate development._
+
+🌐 **[Live Demo](https://annu.live)** - Try Annulive now!
+
+![Annulive Preview](public/annulive-preview.png)
+
+## ✨ Features
+
+- **AI-Powered Roadmaps**: Create intelligent learning paths tailored to your goals
+- **Social Learning**: Share your progress and discover what others are learning
+- **Community-Driven**: Connect with learners on similar paths
+- **Skill Tracking**: Monitor your progress and celebrate milestones
+- **Personalized Experience**: AI-driven recommendations based on your interests
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [Next.js 15](https://nextjs.org) with React 19
+- **Backend**: Python microservices hosted on [DigitalOcean Functions](https://www.digitalocean.com/products/functions)
+- **Database**: [MongoDB](https://www.mongodb.com/) for data storage
+- **AI Model**: [Llama 3.3 Instruct](https://llama.meta.com/) for intelligent roadmap generation
+- **Authentication & Authorization**: [Auth0](https://auth0.com/) for secure user management
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com) with custom animations
+- **Icons**: [Lucide React](https://lucide.dev/) for beautiful icons
+- **TypeScript**: Full type safety throughout the application
 
 ### 🤖 AI Prompt for Roadmap Generation
 
@@ -104,29 +127,6 @@ You are a **Roadmap Generator AI** that creates personalized, actionable learnin
 Generate the roadmap now. Respond only in valid JSON.
 
 </details>
-
-🌐 **[Live Demo](https://annu.live)** - Try Annulive now!
-
-![Annulive Preview](public/annulive-preview.png)
-
-## ✨ Features
-
-- **AI-Powered Roadmaps**: Create intelligent learning paths tailored to your goals
-- **Social Learning**: Share your progress and discover what others are learning
-- **Community-Driven**: Connect with learners on similar paths
-- **Skill Tracking**: Monitor your progress and celebrate milestones
-- **Personalized Experience**: AI-driven recommendations based on your interests
-
-## 🛠️ Tech Stack
-
-- **Frontend**: [Next.js 15](https://nextjs.org) with React 19
-- **Backend**: Python microservices hosted on [DigitalOcean Functions](https://www.digitalocean.com/products/functions)
-- **Database**: [MongoDB](https://www.mongodb.com/) for data storage
-- **AI Model**: [Llama 3.3 Instruct](https://llama.meta.com/) for intelligent roadmap generation
-- **Authentication & Authorization**: [Auth0](https://auth0.com/) for secure user management
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com) with custom animations
-- **Icons**: [Lucide React](https://lucide.dev/) for beautiful icons
-- **TypeScript**: Full type safety throughout the application
 
 ## Project Structure
 
