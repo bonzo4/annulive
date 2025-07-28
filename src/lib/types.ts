@@ -17,6 +17,7 @@ export interface UserData {
   id: string;
   name?: string;
   picture?: string;
+  tags?: string[];
 }
 
 export interface SavedRoadmap {
