@@ -48,11 +48,11 @@ export default function RoadmapsClient() {
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-amber-800/70 dark:text-amber-200/70">
           Create personalized learning roadmaps to master any skill. Get started
-          by creating your first trunk track to see how our platform works.
+          by creating your first roadmap to see how our platform works.
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link href="/roadmaps/new">
-            <Button size="lg">Create Your First Trunk Track</Button>
+            <Button size="lg">Create Your First Roadmap</Button>
           </Link>
           <Link
             href={`/auth/login?returnTo=${process.env.NEXT_PUBLIC_APP_BASE_URL}/roadmaps`}
@@ -74,13 +74,11 @@ export default function RoadmapsClient() {
     <div>
       <div className="flex flex-row justify-between space-x-10">
         <h1 className="mb-6 text-3xl font-bold text-amber-900 dark:text-amber-100">
-          {userData?.name
-            ? `${userData.name}'s Trunk Tracks`
-            : "Your Trunk Tracks"}
+          {userData?.name ? `${userData.name}'s Roadmaps` : "Your Roadmaps"}
         </h1>
         <div className="flex gap-2">
           <Link href="/roadmaps/new">
-            <Button>New Trunk Track</Button>
+            <Button>New Roadmap</Button>
           </Link>
         </div>
       </div>
@@ -99,10 +97,10 @@ export default function RoadmapsClient() {
           {roadmaps.length === 0 ? (
             <div className="flex flex-col items-center py-8 text-center">
               <p className="mb-4 text-amber-700 dark:text-amber-300">
-                You haven&apos;t created any trunk tracks yet.
+                You haven&apos;t created any roadmaps yet.
               </p>
               <Link href="/roadmaps/new">
-                <Button>Create Your First Trunk Track</Button>
+                <Button>Create Your First Roadmap</Button>
               </Link>
             </div>
           ) : (

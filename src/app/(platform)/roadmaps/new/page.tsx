@@ -66,11 +66,11 @@ export default function NewRoadmap() {
     <div className="flex flex-col space-y-5">
       <div className="flex flex-row justify-between space-x-10">
         <h1 className="mb-6 text-3xl font-bold text-amber-900 dark:text-amber-100">
-          New Trunk Track
+          New Roadmap
         </h1>
         {roadmap && (
           <Button onClick={handleCreateNew} variant="outline">
-            Create New Trunk Track
+            Create New Roadmap
           </Button>
         )}
       </div>
@@ -81,7 +81,7 @@ export default function NewRoadmap() {
             <div className="flex flex-col items-center space-y-4">
               <div className="h-12 w-12 animate-spin rounded-full border-4 border-amber-200 border-t-amber-600"></div>
               <p className="text-lg font-medium text-amber-900">
-                Creating your personalized trunk track...
+                Creating your personalized roadmap...
               </p>
               <p className="text-sm text-amber-700">
                 This may take a few moments while our AI analyzes your

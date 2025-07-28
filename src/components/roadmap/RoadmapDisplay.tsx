@@ -100,7 +100,7 @@ export default function RoadmapDisplay({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
-              {roadmap.title || "Your Learning Trunk Track"}
+              {roadmap.title || "Your Learning Roadmap"}
             </h2>
             {roadmapOwner && (
               <RoadmapOwner roadmapOwner={roadmapOwner} userData={userData} />

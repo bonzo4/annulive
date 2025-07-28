@@ -89,11 +89,7 @@ export default function RoadmapPage() {
 
   return (
     <div className="flex flex-col space-y-5">
-      <div className="flex flex-row justify-between space-x-10">
-        <h1 className="mb-6 text-3xl font-bold text-amber-900 dark:text-amber-100">
-          {roadmap.title || "Roadmap Details"}
-        </h1>
-      </div>
+      <div className="flex flex-row justify-between space-x-10"></div>
 
       <RoadmapDisplay
         roadmap={roadmap}

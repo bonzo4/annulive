@@ -7,7 +7,7 @@ interface RoadmapErrorProps {
 }
 
 export default function RoadmapError({
-  title = "Failed to Generate Trunk Track",
+  title = "Failed to Generate Roadmap",
   error,
   onRetry,
   onCreateNew,
@@ -59,7 +59,7 @@ export default function RoadmapError({
             onClick={onCreateNew}
             className="rounded-lg bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-700"
           >
-            Create New Trunk Track
+            Create New Roadmap
           </button>
         )}
       </div>

@@ -93,7 +93,7 @@ export default function Explore() {
     <div>
       <div className="mb-8">
         <h1 className="mb-2 text-3xl font-bold text-amber-900 dark:text-amber-100">
-          Explore Trunk Tracks
+          Explore Roadmaps
         </h1>
         <p className="text-amber-800/70 dark:text-amber-200/70">
           Discover learning roadmaps created by the community

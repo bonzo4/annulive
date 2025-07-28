@@ -30,7 +30,7 @@ export default function Header({ user }: HeaderProps) {
               href="/roadmaps"
               className="font-medium text-amber-700 transition-colors hover:text-amber-900 dark:text-amber-300 dark:hover:text-amber-100"
             >
-              Trunk Tracks
+              Roadmaps
             </Link>
             <Link
               href="/explore"
@@ -79,7 +79,7 @@ export default function Header({ user }: HeaderProps) {
                 className="block rounded-md px-3 py-2 text-base font-medium text-amber-700 transition-colors hover:bg-amber-100 hover:text-amber-900 dark:text-amber-300 dark:hover:bg-amber-900/30 dark:hover:text-amber-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Trunk Tracks
+                Roadmaps
               </Link>
               <Link
                 href="/explore"
