@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Annulive",
     images: [
       {
-        url: "/annulive-logo.svg",
+        url: "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
         width: 120,
         height: 120,
         alt: "Annulive Logo - Tree rings representing layered skill building",
@@ -50,7 +50,9 @@ export const metadata: Metadata = {
     title: "Annulive - Branch out your skills, layer by layer",
     description:
       "Create, share, and explore AI-powered personalized roadmaps in our thriving community of learners.",
-    images: ["/annulive-logo.svg"],
+    images: [
+      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+    ],
     creator: "@annulive",
   },
 
