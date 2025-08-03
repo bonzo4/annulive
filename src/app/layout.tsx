@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     siteName: "Annulive",
     images: [
       {
-        url: "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
-        width: 150,
-        height: 150,
+        url: "/annulive-logo.svg",
+        width: 120,
+        height: 120,
         alt: "Annulive Logo - Tree rings representing layered skill building",
       },
     ],
@@ -50,23 +50,18 @@ export const metadata: Metadata = {
     title: "Annulive - Branch out your skills, layer by layer",
     description:
       "Create, share, and explore AI-powered personalized roadmaps in our thriving community of learners.",
-    images: [
-      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
-    ],
+    images: ["/annulive-logo.svg"],
     creator: "@annulive",
   },
 
   icons: {
-    icon: "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
-    shortcut:
-      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
-    apple:
-      "https://annulive-content.tor1.cdn.digitaloceanspaces.com/app-images/annulive-logo.png",
+    icon: "/annulive-logo.svg",
+    shortcut: "/annulive-logo.svg",
+    apple: "/annulive-logo.svg",
   },
 
   manifest: "/manifest.json",
 };
-
 export default async function RootLayout({
   children,
 }: Readonly<{
